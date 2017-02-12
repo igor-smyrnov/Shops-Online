@@ -1,0 +1,20 @@
+{
+  "name": "shops-online-js",
+  "homepage": "https://github.com/igor-smyrnov/shops-online-js",
+  "authors": [
+    "Igor Smyrnov <smyrnovai@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
