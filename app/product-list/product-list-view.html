@@ -1,0 +1,27 @@
+<div class="container">
+    <pre>{{ productList | json}}</pre>
+    <div class="row product-list">
+        <ng-repeat ng-repeat="product in productList">
+            <div class="col-md-2 product-box"
+                 ng-init="product.default_quantity ? product.quantity = product.default_quantity : product.quantity = 1">
+                <figure>
+                    <a href="#!/products/{{product.id}}">
+                        <img ng-src="{{product.img_src}}" alt="" class="img-responsive">
+                    </a>
+                </figure>
+                <figcaption>
+                    <a href="#!/products/{{product.id}}">
+                        <p class="product-box_name">{{product.name}}</p>
+                    </a>
+                    <span ng-if="product.price" class="price">{{product.price}}</span>
+                    <span ng-if="product.new_price" class="price product-box_new-price">{{product.new_price}}</span>
+                    <span ng-if="product.old_price" class="price product-box_old-price">{{product.old_price}}</span>
+                    <div class="cart-button">
+                        <input type="text" class="cart-button_quantity" ng-model="product.quantity">
+                        <div class="btn btn-primary cart-button_add">Add to cart</div>
+                    </div>
+                </figcaption>
+            </div>
+        </ng-repeat>
+    </div>
+</div>
