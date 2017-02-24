@@ -1,6 +1,6 @@
 "use strict";
 
-var SO = angular.module('Shops_online', ["ui.router"]);
+let SO = angular.module('Shops_online', ["ui.router"]);
 
 SO.config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {

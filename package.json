@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/igor-smyrnov/shops-online-js#readme",
   "dependencies": {
-    "express": "^4.14.1"
+    "express": "^4.14.1",
+    "body-parser": "^1.15.2",
+    "mysql": "^2.11.1"
   }
 }
