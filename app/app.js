@@ -12,7 +12,7 @@ SO.config(['$stateProvider', '$urlRouterProvider',
                 controller: 'productListController'
             })
             .state('products', {
-                url: '/products/:id',
+                url: '/products/:slug',
                 templateUrl: 'app/product-single/product-single-view.html',
                 controller: 'productSingleController'
             })

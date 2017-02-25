@@ -5,12 +5,12 @@
             <div class="col-md-2 product-box"
                  ng-init="product.default_quantity ? product.quantity = product.default_quantity : product.quantity = 1">
                 <figure>
-                    <a href="#!/products/{{product.id}}">
+                    <a href="#!/products/{{product.slug}}">
                         <img ng-src="{{product.img_src}}" alt="" class="img-responsive">
                     </a>
                 </figure>
                 <figcaption>
-                    <a href="#!/products/{{product.id}}">
+                    <a href="#!/products/{{product.slug}}">
                         <p class="product-box_name">{{product.name}}</p>
                     </a>
                     <span ng-if="product.price" class="price">{{product.price}}</span>

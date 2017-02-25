@@ -1,13 +1,12 @@
 "use strict";
 
 SO.controller('productSingleController',
-    [ '$scope', '$http', '$state', '$filter',
-        function ($scope, $http, $state, $filter) {
-            $http.get('server/products.json')
-            .then(function(res){
-                $scope.product = $filter('filter')(res.data,
-                    {id:$state.params.id})[0];
-            });
+    [ '$scope', '$state', 'dataFactory',
+        function ($scope, $state, dataFactory) {
+            dataFactory.getProductBySlug($state.params.slug)
+                .then(function (data) {
+                    $scope.product = data;
+                })
         }
     ]
 );

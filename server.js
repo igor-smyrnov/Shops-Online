@@ -12,18 +12,7 @@ let pool =  mysql.createPool({
 });
 
 let selectAllProducts = 'SELECT * FROM product';
-
-pool.getConnection(function (err, connection) {
-    if(err) throw err;
-
-    //selectAllProducts
-    connection.query(selectAllProducts, function (err, rows) {
-        if(err) throw err;
-        else console.log(rows);
-    });
-
-    connection.release();
-});
+let selectSingleProductBySlug = 'SELECT * FROM product WHERE slug = ?';
 
 app.get('/getProducts', function (request, response) {
     pool.getConnection(function (err, connection) {
@@ -33,6 +22,22 @@ app.get('/getProducts', function (request, response) {
             if(err) throw err;
             else
                 response.send(rows);
+        });
+
+        connection.release();
+    });
+});
+
+app.get('/getProductBySlug/:slug', function (request, response) {
+    pool.getConnection(function (err, connection) {
+
+        //selectAllProducts
+        connection.query(selectSingleProductBySlug, [request.params.slug], function (err, rows) {
+            if(err) throw err;
+            else {
+                console.log(request.params);
+                response.send(rows[0]);
+            }
         });
 
         connection.release();
