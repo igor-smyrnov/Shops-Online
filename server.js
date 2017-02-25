@@ -1,12 +1,42 @@
 "use strict";
 
 let express = require('express');
+let mysql = require('mysql');
 let app = express();
 
-app.get('/getProducts', function (request, response) {
-    console.log("--GET--");
+let pool =  mysql.createPool({
+    host : 'localhost',
+    user : 'root',
+    password: '',
+    database: 'shops-online'
+});
 
-    response.send("Hello!");
+let selectAllProducts = 'SELECT * FROM product';
+
+pool.getConnection(function (err, connection) {
+    if(err) throw err;
+
+    //selectAllProducts
+    connection.query(selectAllProducts, function (err, rows) {
+        if(err) throw err;
+        else console.log(rows);
+    });
+
+    connection.release();
+});
+
+app.get('/getProducts', function (request, response) {
+    pool.getConnection(function (err, connection) {
+
+        //selectAllProducts
+        connection.query(selectAllProducts, function (err, rows) {
+            if(err) throw err;
+            else
+                response.send(rows);
+        });
+
+        connection.release();
+    });
 });
 
 // Server starter

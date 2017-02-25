@@ -1,5 +1,5 @@
 <div class="container">
-    Server data: <pre>{{ serverData | json}}</pre>
+    Server data: <pre>{{ productList | json}}</pre>
     <div class="row product-list">
         <ng-repeat ng-repeat="product in productList">
             <div class="col-md-2 product-box"
@@ -14,7 +14,6 @@
                         <p class="product-box_name">{{product.name}}</p>
                     </a>
                     <span ng-if="product.price" class="price">{{product.price}}</span>
-                    <span ng-if="product.new_price" class="price product-box_new-price">{{product.new_price}}</span>
                     <span ng-if="product.old_price" class="price product-box_old-price">{{product.old_price}}</span>
                     <div class="cart-button">
                         <input type="text" class="cart-button_quantity" ng-model="product.quantity">
