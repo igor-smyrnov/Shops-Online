@@ -11,30 +11,51 @@ let app = express();
 
 let jsonProducts = csvToJson.toObject(fs.readFileSync(__dirname+'/products.csv', { encoding : 'utf8'}));
 
-app.get('/createDbData', function (request, response) {
-    DB.createDbData(function (err, rows) {
-        if (err) throw err;
+app.get('/createDb', function (request, response) {
+    DB.createDb(function (err, rows) {
+        if (err) response.send(err);
         response.send(rows);
     });
 });
 
 app.get('/createDbStructure', function (request, response) {
     DB.createDbStructure(function (err, rows) {
-        if (err) throw err;
+        if (err) response.send(err);
+        response.send(rows);
+    });
+});
+
+app.get('/createDbData', function (request, response) {
+    DB.createDbData(function (err, rows) {
+        if (err) response.send(err);
         response.send(rows);
     });
 });
 
 app.get('/getProducts', function (request, response) {
     DB.getProducts(function (err, rows) {
-        if (err) throw err;
+        if (err) response.send(err);
         response.send(rows);
     });
 });
 
 app.get('/getProductBySlug/:slug', function (request, response) {
     DB.getProductBySlug(request.params.slug, function (err, rows) {
-        if (err) throw err;
+        if (err) response.send(err);
+        response.send(rows);
+    });
+});
+
+app.get('/removeTables', function (request, response) {
+    DB.removeTables(function (err, rows) {
+        if (err) response.send(err);
+        response.send(rows);
+    });
+});
+
+app.get('/isStructureExist', function (request, response) {
+    DB.isStructureExist(function (err, rows) {
+        if (err) response.send(err);
         response.send(rows);
     });
 });
