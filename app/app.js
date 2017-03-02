@@ -16,5 +16,9 @@ SO.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: 'app/product-single/product-single-view.html',
                 controller: 'productSingleController'
             })
+            .state('admin', {
+                url: '/admin-panel',
+                templateUrl: 'app/admin-panel/admin-panel-view.html'
+            })
 
 }]);

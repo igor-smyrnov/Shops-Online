@@ -2,46 +2,40 @@
 
 let config = require('./config.json');
 let express = require('express');
-let mysql = require('mysql');
+let fs = require('fs');
+let csvToJson = require('csvjson');
+let DB = require('./database');
 let app = express();
 
+//-- CSV
 
-let pool =  mysql.createPool({
-    host: config.host,
-    user: config.db_user,
-    password: config.db_password,
-    database: config.db_name
+let jsonProducts = csvToJson.toObject(fs.readFileSync(__dirname+'/products.csv', { encoding : 'utf8'}));
+
+app.get('/createDbData', function (request, response) {
+    DB.createDbData(function (err, rows) {
+        if (err) throw err;
+        response.send(rows);
+    });
 });
 
-let selectAllProducts = 'SELECT * FROM product';
-let selectSingleProductBySlug = 'SELECT * FROM product WHERE slug = ?';
+app.get('/createDbStructure', function (request, response) {
+    DB.createDbStructure(function (err, rows) {
+        if (err) throw err;
+        response.send(rows);
+    });
+});
 
 app.get('/getProducts', function (request, response) {
-    pool.getConnection(function (err, connection) {
-        if(err) throw err;
-
-        //selectAllProducts
-        connection.query(selectAllProducts, function (err, rows) {
-            if(err) throw err;
-            else
-                response.send(rows);
-        });
-
-        connection.release();
+    DB.getProducts(function (err, rows) {
+        if (err) throw err;
+        response.send(rows);
     });
 });
 
 app.get('/getProductBySlug/:slug', function (request, response) {
-    pool.getConnection(function (err, connection) {
-
-        //selectAllProducts
-        connection.query(selectSingleProductBySlug, [request.params.slug], function (err, rows) {
-            if(err) throw err;
-            else
-                response.send(rows[0]);
-        });
-
-        connection.release();
+    DB.getProductBySlug(request.params.slug, function (err, rows) {
+        if (err) throw err;
+        response.send(rows);
     });
 });
 

@@ -129,6 +129,14 @@ footer {
     margin: 6px 3px 2px;
 }
 
+/* end of styles */
+
+/* Main */
+
+main {
+    padding-bottom: 30px;
+}
+
 /* Navbar */
 
 .navbar-cart-box {
@@ -192,4 +200,11 @@ footer {
 
 .product-single_image {
     margin-bottom: 50px;
+}
+
+footer {
+    padding-top: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
