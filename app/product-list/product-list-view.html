@@ -1,6 +1,7 @@
 <div class="container">
-    Server data: <pre>{{ productList | json}}</pre>
-    <div class="row product-list">
+    <!--Server data: <pre>{{ productList | json}}</pre>-->
+    <div class="alert alert-danger" ng-if="productList.error">{{productList.error}}</div>
+    <div class="row product-list" ng-if="!productList.error">
         <ng-repeat ng-repeat="product in productList">
             <div class="col-md-2 product-box"
                  ng-init="product.default_quantity ? product.quantity = product.default_quantity : product.quantity = 1">

@@ -22,43 +22,61 @@ let showTableProducts = "SHOW TABLES LIKE 'products'";
 
 function getProducts (callback) {
     pool.getConnection(function (err, connection) {
-        if (err) throw err;
+        if (err) callback({"error": err});
 
-        connection.query(selectAllProducts, function (err, rows) {
-            connection.release();
-            callback(err, rows);
+        isStructureExist(function (err, answer) {
+            if (err) callback({"error": err});
+            if(answer.result) {
+                connection.query(selectAllProducts, function (err, rows) {
+                    connection.release();
+                    callback(err, rows);
+                });
+            }
+            else callback({"error": "There are no tables in DB!"})
         });
     });
 }
 
 function getProductBySlug(slug, callback) {
     pool.getConnection(function (err, connection) {
-        if (err) throw err;
+        if (err) callback({"error": err});
 
-        connection.query(selectSingleProductBySlug, [slug], function (err, rows) {
-            connection.release();
-            callback(err, rows[0]);
+        isStructureExist(function (err, answer) {
+            if (err) callback({"error": err});
+            if(answer.result) {
+                connection.query(selectSingleProductBySlug, [slug], function (err, rows) {
+                    connection.release();
+                    callback(err, rows[0]);
+                });
+            }
+            else callback({"error": "There are no tables in DB!"})
         });
     });
 }
 
 function createDbData(callback) {
     pool.getConnection(function (err, connection) {
-        if (err) throw err;
+        if (err) callback({"error": err});
 
-        connection.query(createDbDataSQL, function (err, rows) {
-            connection.release();
-            callback(err, rows);
+        isStructureExist(function (err, answer) {
+            if (err) callback({"error": err});
+            if(answer.result) {
+                connection.query(createDbDataSQL, function (err, rows) {
+                    connection.release();
+                    callback(err, rows);
+                });
+            }
+            else callback({"error": "There are no tables in DB!"})
         });
     });
 }
 
-function createDbStructure(callback) {
+function createDbTables(callback) {
     pool.getConnection(function (err, connection) {
-        if (err) throw err;
+        if (err) callback({"error": err});
 
         isStructureExist(function (err, answer) {
-            if (err) callback(err);
+            if (err) callback({"error": err});
             if(!answer.result) {
 
                 connection.query(createDbStructureSQL, function (err, rows) {
@@ -66,7 +84,7 @@ function createDbStructure(callback) {
                     callback(err, rows);
                 });
             }
-            else callback("The DB already have structure!");
+            else callback({"error": "The DB already have tables!"});
         })
     })
 }
@@ -74,7 +92,7 @@ function createDbStructure(callback) {
 //TODO: is it necessary?
 function createDb(callback) {
     pool.getConnection(function (err, connection) {
-        if (err) throw err;
+        if (err) callback({"error": err});
 
         connection.query(createDbSQL, [config.db_name], function (err, rows) {
             connection.release();
@@ -85,24 +103,24 @@ function createDb(callback) {
 
 function removeTables(callback) {
     pool.getConnection(function (err, connection) {
-        if (err) throw err;
+        if (err) callback({"error": err});
 
         isStructureExist(function (err, answer) {
-            if (err) callback(err);
+            if (err) callback({"error": err});
             if(answer.result) {
                 connection.query(dropTables, function (err, rows) {
                     connection.release();
                     callback(err, rows);
                 });
             }
-            else callback("There are no structure in DB!")
+            else callback({"error": "There are no tables in DB!"})
         });
     });
 }
 
 function isStructureExist(callback) {
     pool.getConnection(function (err, connection) {
-        if (err) throw err;
+        if (err) callback({"error": err});
 
         connection.query(showTableProducts, function (err, rows) {
             let rowsExistence = {"result":0};
@@ -118,7 +136,7 @@ module.exports = {
     getProducts: getProducts,
     getProductBySlug: getProductBySlug,
     createDbData: createDbData,
-    createDbStructure: createDbStructure,
+    createDbTables: createDbTables,
     createDb: createDb,
     removeTables: removeTables,
     isStructureExist: isStructureExist

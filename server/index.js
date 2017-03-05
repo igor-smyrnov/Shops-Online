@@ -14,42 +14,42 @@ let jsonProducts = csvToJson.toObject(fs.readFileSync(__dirname+'/products.csv',
 app.get('/createDb', function (request, response) {
     DB.createDb(function (err, rows) {
         if (err) response.send(err);
-        response.send(rows);
+        else response.send(rows);
     });
 });
 
-app.get('/createDbStructure', function (request, response) {
-    DB.createDbStructure(function (err, rows) {
+app.get('/createDbTables', function (request, response) {
+    DB.createDbTables(function (err, rows) {
         if (err) response.send(err);
-        response.send(rows);
+        else response.send(rows);
     });
 });
 
 app.get('/createDbData', function (request, response) {
     DB.createDbData(function (err, rows) {
         if (err) response.send(err);
-        response.send(rows);
+        else response.send(rows);
     });
 });
 
 app.get('/getProducts', function (request, response) {
     DB.getProducts(function (err, rows) {
         if (err) response.send(err);
-        response.send(rows);
+        else response.send(rows);
     });
 });
 
 app.get('/getProductBySlug/:slug', function (request, response) {
     DB.getProductBySlug(request.params.slug, function (err, rows) {
         if (err) response.send(err);
-        response.send(rows);
+        else response.send(rows);
     });
 });
 
-app.get('/removeTables', function (request, response) {
+    app.get('/removeTables', function (request, response) {
     DB.removeTables(function (err, rows) {
         if (err) response.send(err);
-        response.send(rows);
+        else response.send(rows);
     });
 });
 

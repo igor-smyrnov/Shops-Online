@@ -1,6 +1,7 @@
 <div class="container">
-    <pre>{{product | json}}</pre>
-    <div class="row product-single">
+    <!--<pre>{{product | json}}</pre>-->
+    <div class="alert alert-danger" ng-if="product.error">{{product.error}}</div>
+    <div class="row product-single" ng-if="!product.error">
         <div class="col-md-4 product-single_image">
             <img ng-src="{{product.img_src}}" alt="" class="img-responsive">
         </div>
