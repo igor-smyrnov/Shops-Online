@@ -1,0 +1,10 @@
+id,img_src,name,slug,price,old_price,description,shop_id,category_id
+,./../assets/img/lidl_001.jpg,Oshee Woda,oshee_woda_01,2.49,,555 ml/1 but.1 l=4.49,1,1
+,./../assets/img/lidl_002.jpg,Ocean Sea Krewetki indyjskie kidi lub mieszanka morska,ocean_sea_krewetki,9.99,,250 g/1 opak.100 g=4.00,1,1
+,./../assets/img/lidl_003.jpg,Fin Carre Czekolada mleczna z siekanymi migdałami,fin_carre_czekolada_01,2.69,,100 g/1 opak.,1,1
+,./../assets/img/kaufland_001.jpg,Sok pomarańczowy,sok_pomaranczowy_01,3.99,4.44,Sok pomarańczowy 100%,2,1
+,./../assets/img/kaufland_002.jpg,Kiwi,kiwi_01,5.99,,3 sztuki opakowanie,2,1
+,./../assets/img/kaufland_003.jpg,Tofu naturalne,tofu_naturalne,4.99,6.45,2 x 200 g opakowanie,2,1
+,./../assets/img/piotr_i_pawel_001.jpg,Błonnik gryczany bio,blonnik_gryczany,16.99,,Błonnik gryczany Bio - można spożywać z jogurtem musli płatkami śniadaniowymi kakao mlekiem kefirem lub sokiem . Można też stosować do zagęszczenia koktajli zup sosów deserów oraz jako dodatek do pieczenia ciast i chleba.',3,1
+,./../assets/img/piotr_i_pawel_002.jpg,Wafle ryżowe naturalne,wafle_ryzowe_01,2.39,,Wafle ryżowe naturalne - Piotr i Paweł,3,1
+,./../assets/img/piotr_i_pawel_003.jpg,Masło Irlandzkie Dublin Dairy,dublin_dairy,7.29,,Masło irlandzkie Dublin Dair. Zawartość tłuszczu 82%,3,1

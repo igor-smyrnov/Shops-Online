@@ -1,17 +1,15 @@
 <div class="container">
     <div class="row shop-single">
         <div class="col-md-2 shop-single_image">
-            <img src="./../assets/img/lidl_logo_3.jpg" alt="" class="img-responsive">
+            <img ng-src="{{shop.img_src}}" alt="" class="img-responsive">
         </div>
         <div class="col-md-8 shop-single_description">
-            <h1>Shop description</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aspernatur commodi doloremque
-                itaque, iusto veritatis!
-            </p>
+            <h1>{{shop.name}}</h1>
+            <p>{{shop.description}}</p>
             <div class="shop-single_products-link small">
-                See another products of:
-                <a href="">
-                    <img src="./../assets/img/lidl_logo_3.jpg" alt="">
+                See products of:
+                <a ng-href="#!/{{shop.slug}}/products">
+                    <img ng-src="{{shop.img_src}}" alt="">
                 </a>
             </div>
         </div>

@@ -47,6 +47,10 @@ a:hover {
     box-shadow: none;
 }
 
+.alert {
+    border-radius: 0;
+}
+
 .price {
     color: #298C99;
 }
@@ -126,6 +130,7 @@ footer {
 }
 
 .product-box_name {
+    min-height: 50px;
     margin: 6px 3px 2px;
 }
 

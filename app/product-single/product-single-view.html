@@ -8,15 +8,14 @@
         <div class="col-md-6 product-single_details">
             <h1>{{product.name}}</h1>
             <div>
-                <span ng-if="product.price" class="price">{{product.price}}</span>
-                <span ng-if="product.new_price" class="price product-box_new-price">{{product.new_price}}</span>
-                <span ng-if="product.old_price" class="price product-box_old-price">{{product.old_price}}</span>
+                <span ng-if="product.price" class="price">{{product.price | currency : "zł"}}</span>
+                <span ng-if="product.old_price" class="price product-box_old-price">{{product.old_price | currency : "zł"}}</span>
             </div>
             <p>{{product.description}}</p>
             <div class="product-single_shop-link small">
                 See another products of:
-                <a href="">
-                    <img src="./../assets/img/lidl_logo_3.jpg" alt="">
+                <a ng-href="#!/{{shop.slug}}/products">
+                    <img ng-src="{{shop.img_src}}" alt="">
                 </a>
             </div>
         </div>
