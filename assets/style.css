@@ -35,7 +35,8 @@ a:hover {
 .btn-primary,
 .btn-primary:active:hover {
     background-color: #FF763B;
-    border-color: transparent;
+    border-color: #2A3540;
+    color: #2A3540;
 }
 
 .btn-primary:hover,
@@ -47,8 +48,49 @@ a:hover {
     box-shadow: none;
 }
 
+.btn-info,
+.btn-info:active:hover {
+    background-color: #298C99;
+    color: #fff;
+    border-color: #2A3540;
+    opacity: .8;
+}
+
+.btn-info:hover,
+.btn-info:active,
+.btn-info:focus {
+    opacity: 1;
+    background-color: #298C99;
+    border-color: #2A3540;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.btn-danger,
+.btn-danger:active:hover {
+    opacity: .8;
+    background-color: #E81D18;
+    color: #fff;
+    border-color: #2A3540;
+}
+
+.btn-danger:hover,
+.btn-danger:active,
+.btn-danger:focus {
+    opacity: 1;
+    background-color: #E81D18;
+    border-color: #2A3540;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 .alert {
     border-radius: 0;
+}
+
+.dropdown-menu {
+    border-radius: 0;
+    border-color: #298C99;
 }
 
 .price {
@@ -66,6 +108,10 @@ footer {
 }
 
 /* navbar styles */
+
+.navbar {
+    margin-bottom: 0;
+}
 
 .navbar-default {
     background-color: #298C99;
@@ -95,16 +141,17 @@ footer {
 
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
-.navbar-default .navbar-nav>.active>a:hover {
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover{
     color: #298C99;
     background-color: #2A3540;
 }
 
-.navbar-default .navbar-nav>.open>a,
-.navbar-default .navbar-nav>.open>a:focus,
-.navbar-default .navbar-nav>.open>a:hover {
-    color: #2A3540;
-    background-color: #A2A6B0;
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+    color: #fff;
+    background-color: #298C99;
 }
 
 .navbar-cart-box_subtotal {
@@ -134,12 +181,16 @@ footer {
     margin: 6px 3px 2px;
 }
 
+.admin-panel {
+    background-color: rgba(41,140,153, 0.3);
+}
+
 /* end of styles */
 
 /* Main */
 
-main {
-    padding-bottom: 30px;
+main .container{
+    padding: 30px 0;
 }
 
 /* Navbar */

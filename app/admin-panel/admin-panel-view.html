@@ -1,13 +1,13 @@
-<div class="container jumbotron">
+<div class="container admin-panel">
     <div class="alert alert-danger" ng-if="answer.error">{{answer.error}}</div>
     <div class="alert alert-success" ng-if="answer && !answer.error">Success!</div>
 
     <div class="col-md-6">
         <h3>DB management</h3>
         <div class="btn-group" role="group">
-            <div class="btn btn-info" ng-click="createTablesData()">create tables data</div>
-            <div class="btn btn-primary" ng-click="createTables()">create tables</div>
-            <div class="btn btn-danger" ng-click="removeTables()">remove tables</div>
+            <div class="btn btn-primary" ng-click="createTablesData()">Create tables data</div>
+            <div class="btn btn-primary" ng-click="createTables()">Create tables</div>
+            <div class="btn btn-primary" ng-click="removeTables()">Remove tables</div>
         </div>
     </div>
 
@@ -15,7 +15,7 @@
         <h3>Data from CSV</h3>
         <label for="csvName">Name of CSV file</label>
         <input id="csvName" type="text" ng-model="csvName">
-        <div class="btn btn-info" ng-click="insertCSVtoDB()">Download</div>
+        <div class="btn btn-primary" ng-click="insertCSVtoDB()">Download</div>
     </div>
 
     <div ng-if="answer" class="col-md-12">
