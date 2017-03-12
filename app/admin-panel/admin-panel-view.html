@@ -1,6 +1,6 @@
 <div class="container admin-panel">
     <div class="alert alert-danger" ng-if="answer.error">{{answer.error}}</div>
-    <div class="alert alert-success" ng-if="answer && !answer.error">Success!</div>
+    <div class="alert alert-success" ng-if="answer.success">{{answer.success}}</div>
 
     <div class="col-md-6">
         <h3>DB management</h3>

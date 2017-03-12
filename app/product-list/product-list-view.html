@@ -5,7 +5,7 @@
         <h2 ng-if="shop">Products from "{{shop.name}}" shop</h2>
         <ng-repeat ng-repeat="product in productList">
             <div class="col-md-2 product-box"
-                 ng-init="product.default_quantity ? product.quantity = product.default_quantity : product.quantity = 1">
+                 ng-init="product.quantity = 1">
                 <figure>
                     <a ng-href="#!/products/{{product.slug}}">
                         <img ng-src="{{product.img_src}}" alt="" class="img-responsive">

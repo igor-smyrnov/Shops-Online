@@ -5,6 +5,7 @@ let mysql = require('mysql');
 let fs = require('fs');
 
 let pool =  mysql.createPool({
+    port: config.mysql_port,
     host: config.host,
     user: config.db_user,
     password: config.db_password,
@@ -20,9 +21,15 @@ let selectSingleShopById = 'SELECT * FROM shops WHERE id = ?';
 let selectSingleShopBySlug = 'SELECT * FROM shops WHERE slug = ?';
 let createDbStructure_SQL = fs.readFileSync(__dirname+'/shops_online-structure.sql', { encoding : 'utf8'});
 let createDbData_SQL = fs.readFileSync(__dirname+'/shops_online-data.sql', { encoding : 'utf8'});
-let dropTables = "SET FOREIGN_KEY_CHECKS=0; DROP TABLE products, shops, pages, orders, categories";
+let dropTables = `SET FOREIGN_KEY_CHECKS=0; DROP TABLE ` +
+    `${config.db_name}.categories, ` +
+    `${config.db_name}.orders, ` +
+    `${config.db_name}.pages, ` +
+    `${config.db_name}.products,` +
+    `${config.db_name}.shops`;
+
 let showTablesLike = "SHOW TABLES LIKE ?";
-let insertJSON_SQL = "SET FOREIGN_KEY_CHECKS=0; INSERT INTO `products` SET ?";
+let insertJSON_SQL = `SET FOREIGN_KEY_CHECKS=0; INSERT INTO ${config.db_name}.products VALUES`;
 
 function getProducts (callback) {
     pool.getConnection(function (err, connection) {
@@ -132,9 +139,10 @@ function createTablesData(callback) {
 
         isTableExist('products', function (err, answer) {
             if(answer.result) {
-                connection.query(createDbData_SQL, function (err, rows) {
+                connection.query(createDbData_SQL, function (err) {
                     connection.release();
-                    callback({"error": err}, rows);
+                    if (err && err.code && err.code === "ER_DUP_ENTRY") err = {"error": "Data has been duplicated!"};
+                    callback(err, {"success": "Tables data has been created!"});
                 });
             }
             else callback({"error": "There are no tables in DB!"})
@@ -148,9 +156,9 @@ function createTables(callback) {
 
         isTableExist('products', function (err, answer) {
             if(!answer.result) {
-                connection.query(createDbStructure_SQL, function (err, rows) {
+                connection.query(createDbStructure_SQL, function (err) {
                     connection.release();
-                    callback(err, rows);
+                    callback(err, {"success": "Tables has been created!"});
                 });
             }
             else callback({"error": "The DB already have tables!"});
@@ -164,9 +172,9 @@ function removeTables(callback) {
 
         isTableExist('products', function (err, answer) {
             if(answer.result) {
-                connection.query(dropTables, function (err, rows) {
+                connection.query(dropTables, function (err) {
                     connection.release();
-                    callback(err, rows);
+                    callback(err, {"success": "Tables has been removed!"});
                 });
             }
             else callback({"error": "There are no tables in DB!"})
@@ -180,22 +188,27 @@ function insertJSON(insertion, callback) {
 
         isTableExist('products', function (err, answer) {
             if(answer.result) {
-
-                let insert = '';
-                for(let i = 0; i < insertion.length; i++){
-                    insertion[i].id = null;
-                    insertion[i].shop_id = parseInt(insertion[i].shop_id);
-                    insertion[i].category_id = parseInt(insertion[i].category_id);
-                    insertion[i].price = parseFloat(insertion[i].price);
-                    if(insertion[i].old_price === '') insertion[i].old_price = null;
-                    else insertion[i].old_price = parseFloat(insertion[i].old_price);
-                    let product = insertion[i];
-                    insert += connection.query(insertJSON_SQL, product).sql + '; ';
+                let query = insertJSON_SQL;
+                for(let i=1; i < insertion.length; i++){
+                    query += '(' ;
+                    for(let j=0; j < insertion[i].length; j++){
+                        if(insertion[i][j] === "") query += null + ',';
+                        else {
+                            query += '"' + insertion[i][j];
+                            if (!(j === insertion[i].length - 1)) query += '",';
+                            else query += '"';
+                        }
+                    }
+                    if(!(i === insertion.length-1)) query += '), ';
+                    else query += '); ';
+                    // console.log(query);
                 }
 
-                connection.query(insert, function (err, rows) {
+                connection.query(query, function (err) {
                     connection.release();
-                    callback({"error": err}, rows);
+                    if (err && err.code && err.code === "ER_DUP_ENTRY") err = {"error": "Data has been duplicated!"};
+                    callback(err,
+                        {"success": "Data has been imported to DB!"});
                 });
             }
             else callback({"error": "There are no tables in DB!"})

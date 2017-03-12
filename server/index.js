@@ -58,7 +58,7 @@ app.get('/insertCSVtoDB/:filename', function (request, response) {
         response.send({"error": "file not found"});
     }
     else {
-        let jsonProducts = csvToJson.toObject(
+        let jsonProducts = csvToJson.toArray(
             fs.readFileSync(filePath, {encoding: 'utf-8'})
         );
 
@@ -94,7 +94,7 @@ app.get('/createTablesData', function (request, response) {
 
 app.use(express.static(__dirname + "../../"));
 
-app.set('port', process.env.PORT || config.port);
+app.set('port', process.env.PORT || config.app_port);
 app.listen(app.get('port'), function () {
     console.log('App started at localhost:' + app.get('port'));
 });
