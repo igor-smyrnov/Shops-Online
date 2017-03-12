@@ -22,9 +22,6 @@ let selectSingleShopBySlug = 'SELECT * FROM shops WHERE slug = ?';
 let createDbStructure_SQL = fs.readFileSync(__dirname+'/shops_online-structure.sql', { encoding : 'utf8'});
 let createDbData_SQL = fs.readFileSync(__dirname+'/shops_online-data.sql', { encoding : 'utf8'});
 let dropTables = `SET FOREIGN_KEY_CHECKS=0; DROP TABLE ` +
-    `${config.db_name}.categories, ` +
-    `${config.db_name}.orders, ` +
-    `${config.db_name}.pages, ` +
     `${config.db_name}.products,` +
     `${config.db_name}.shops`;
 

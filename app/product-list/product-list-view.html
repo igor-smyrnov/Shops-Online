@@ -1,5 +1,4 @@
 <div class="container">
-    <!--Server data: <pre>{{ productList | json}}</pre>-->
     <div class="alert alert-danger" ng-if="productList.error">{{productList.error}}</div>
     <div class="row product-list" ng-if="!productList.error">
         <h2 ng-if="shop">Products from "{{shop.name}}" shop</h2>

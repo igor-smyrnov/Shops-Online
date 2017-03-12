@@ -16,33 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `categories`
---
-
-LOCK TABLES `categories` WRITE;
-/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `orders`
---
-
-LOCK TABLES `orders` WRITE;
-/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `pages`
---
-
-LOCK TABLES `pages` WRITE;
-/*!40000 ALTER TABLE `pages` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pages` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Dumping data for table `products`
 --
 
@@ -58,6 +31,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `shops` WRITE;
 /*!40000 ALTER TABLE `shops` DISABLE KEYS */;
+INSERT INTO `shops` VALUES (1,'Lidl','lidl','Lidl to międzynarodowa grupa przedsiębiorstw, a jednocześnie odnosząca sukcesy sieć sklepów spożywczych, która prowadzi aktywną działalność na terenie całej Europy.','./../assets/img/lidl_logo.jpg'),(2,'Kaufland','kaufland','W Polsce zapraszamy do ponad 200 sklepów sieci Kaufland. Poza tym nasze markety znajdują się w Niemczech, Rumunii, Bułgarii, Chorwacji, Czechach i na Słowacji.\r\n \r\nGrupa Kaufland należy do 10 największych przedsiębiorstw handlowych Europy i dominuje w branży sklepów wielkopowierzchniowych. ','./../assets/img/kaufland_logo.jpg'),(3,'Piotr i Paweł','piotr_i_pawel','Supermarket internetowy Piotr i Paweł Łódź to miejsce na udane zakupy w Internecie. Jesteśmy już w całej Polsce. Jedyne delikatesy internetowe z dostawą do domu! Nasz internetowy sklep spożywczy to przyjemność z e-zakupów. W naszej ofercie: Pieczywo, Warzywa i Owoce, Nabiał, Sery, Wędliny i Mięso, Ryby, Mrożonki, Kawy i Herbaty, Przetwory i Przyprawy, Słodycze, Napoje. Piotr i Paweł Łódź – Zakupy przez Internet. Życzymy udanych zakupów. Supermarket online - Zapraszamy.','./../assets/img/piotr_i_pawel_logo.jpg');
 /*!40000 ALTER TABLE `shops` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
