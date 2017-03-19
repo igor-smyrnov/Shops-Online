@@ -26,6 +26,7 @@ a:hover {
 .btn {
     border-radius: 0;
     padding: 6px 8px;
+    box-shadow: inset 0 17px 0 0 rgba(255, 255, 255, 0.4);
 }
 
 .form-control {
@@ -43,9 +44,6 @@ a:hover {
 .btn-primary:active,
 .btn-primary:focus {
     background-color: #E81D18;
-    border-color: transparent;
-    -webkit-box-shadow: none;
-    box-shadow: none;
 }
 
 .btn-info,

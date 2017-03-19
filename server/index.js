@@ -58,9 +58,11 @@ app.get('/insertCSVtoDB/:filename', function (request, response) {
         response.send({"error": "file not found"});
     }
     else {
-        let jsonProducts = csvToJson.toArray(
+        let jsonProducts = csvToJson.toObject(
             fs.readFileSync(filePath, {encoding: 'utf-8'})
         );
+
+        jsonProducts = JSON.parse(JSON.stringify(jsonProducts).replace(/\"\"/g, null));
 
         DB.insertJSON(jsonProducts, function (err, rows) {
             if (err) response.send(err);
