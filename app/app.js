@@ -13,16 +13,19 @@ SO.config(['$stateProvider', '$urlRouterProvider',
             })
             .state('byShop', {
                 url: '/:shopSlug/products',
+                params: {shopId: null},
                 templateUrl: 'app/product-list/product-list-view.html',
                 controller: 'productListByShopController'
             })
             .state('product', {
                 url: '/products/:slug',
+                params: {id: null},
                 templateUrl: 'app/product-single/product-single-view.html',
                 controller: 'productSingleController'
             })
             .state('shop', {
                 url: '/shops/:slug',
+                params: {id: null},
                 templateUrl: 'app/shop-single/shop-single-view.html',
                 controller: 'shopSingleController'
             })

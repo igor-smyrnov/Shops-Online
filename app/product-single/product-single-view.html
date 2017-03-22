@@ -1,6 +1,6 @@
 <div class="container">
     <div class="alert alert-danger"
-         ng-if="product.error">{{product.error}}</div>
+         ng-if="product.error">{{product.error.message}}</div>
     <div class="row product-single"
          ng-if="!product.error">
         <div class="col-md-4 product-single_image">
@@ -22,7 +22,7 @@
             <div ng-if="shop"
                  class="product-single_shop-link small">
                 See another products of:
-                <a ng-href="#!/{{shop.slug}}/products">
+                <a ui-sref="byShop({ shopId: shop.id, shopSlug: shop.slug})">
                     <img ng-src="{{shop.img_src}}" alt="">
                 </a>
             </div>

@@ -39,7 +39,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li ng-repeat="shop in ShopsList">
-                                    <a ng-href="#!/shops/{{shop.slug}}">
+                                    <a ui-sref="shop({ id: shop.id, slug: shop.slug})">
                                         {{shop.name}}</a>
                                 </li>
                             </ul>

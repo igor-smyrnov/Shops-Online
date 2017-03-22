@@ -16,9 +16,9 @@ SO.factory('dataFactory', function ($http) {
                 .then(response => response.data);
             return promise;
         },
-        getProductBySlug: function (slug) {
+        getProductById: function (id) {
             promise = $http
-                .get('http://localhost:3000/getProductBySlug/' + slug)
+                .get('http://localhost:3000/getProductById/' + id)
                 .then(response => response.data);
             return promise;
         },
@@ -31,12 +31,6 @@ SO.factory('dataFactory', function ($http) {
         getShopById: function (id) {
             promise = $http
                 .get('http://localhost:3000/getShopById/' + id)
-                .then(response => response.data);
-            return promise;
-        },
-        getShopBySlug: function (slug) {
-            promise = $http
-                .get('http://localhost:3000/getShopBySlug/' + slug)
                 .then(response => response.data);
             return promise;
         },

@@ -56,14 +56,6 @@ const Shops = connection.define('shops', {
     description: Sequelize.INTEGER
 });
 
-connection
-    .sync({ force: true })
-    .then(function(err) {
-        console.log('It worked!');
-    }, function (err) {
-        console.log('An error occurred while creating the table:', err);
-    });
-
 function getProducts(callback) {
     Products
         .all()
@@ -89,9 +81,9 @@ function getProductsByShopId(shop_id, callback) {
         })
 }
 
-function getProductBySlug(slug, callback) {
+function getProductById(id, callback) {
     Products
-        .findOne({where: {slug: slug}})
+        .findOne({where: {id: id}})
         .then(function (products) {
             if(!products) callback({"error": {"message": "No results"}});
             callback(products)
@@ -115,22 +107,10 @@ function getShops(callback) {
 
 function getShopById(id, callback) {
     Shops
-        .findAll({where: {id: id}})
-        .then(function (shops) {
-            if(!shops) callback({"error": {"message": "No results"}});
-            callback(shops)
-        })
-        .catch(function (errors) {
-            callback({"error":errors})
-        })
-}
-
-function getShopBySlug(slug, callback) {
-    Shops
-        .findOne({where: {slug: slug}})
-        .then(function (shops) {
-            if(!shops) callback({"error": {"message": "No results"}});
-            callback(shops)
+        .findOne({where: {id: id}})
+        .then(function (shop) {
+            if(!shop) callback({"error": {"message": "No results"}});
+            callback(shop);
         })
         .catch(function (errors) {
             callback({"error":errors})
@@ -188,10 +168,9 @@ function insertJSON(insertion, callback) {
 module.exports = {
     getProducts: getProducts,
     getProductsByShopId: getProductsByShopId,
-    getProductBySlug: getProductBySlug,
+    getProductById: getProductById,
     getShops: getShops,
     getShopById: getShopById,
-    getShopBySlug: getShopBySlug,
     createTablesData: createTablesData,
     createTables: createTables,
     removeTables: removeTables,

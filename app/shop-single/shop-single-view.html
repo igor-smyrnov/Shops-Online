@@ -10,7 +10,7 @@
             <p>{{shop.description}}</p>
             <div class="shop-single_products-link small">
                 See products of:
-                <a ng-href="#!/{{shop.slug}}/products">
+                <a ui-sref="byShop({ shopId: shop.id, shopSlug: shop.slug})">
                     <img ng-src="{{shop.img_src}}" alt="">
                 </a>
             </div>
