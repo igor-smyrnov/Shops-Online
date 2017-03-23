@@ -19,11 +19,11 @@
                     {{product.old_price | currency : "zł"}}</span>
             </div>
             <p>{{product.description}}</p>
-            <div ng-if="shop"
+            <div ng-if="product.shop"
                  class="product-single_shop-link small">
                 See another products of:
-                <a ui-sref="byShop({ shopId: shop.id, shopSlug: shop.slug})">
-                    <img ng-src="{{shop.img_src}}" alt="">
+                <a ui-sref="byShop({ shopId: product.shop_id, shopSlug: product.shop.slug})">
+                    <img ng-src="{{product.shop.img_src}}" alt="">
                 </a>
             </div>
         </div>

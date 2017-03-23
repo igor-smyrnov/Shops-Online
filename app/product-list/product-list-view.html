@@ -1,8 +1,9 @@
 <div class="container">
     <div class="alert alert-danger"
-         ng-if="productList.error">{{productList.error}}</div>
+         ng-if="productList.error">{{productList.error.message}}</div>
     <div class="row product-list"
          ng-if="!productList.error">
+
         <h2 ng-if="shop">Products from "{{shop.name}}" shop</h2>
         <ng-repeat ng-repeat="product in productList">
             <div class="col-md-2 product-box"

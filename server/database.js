@@ -38,7 +38,7 @@ const connection = new Sequelize(config.db_name, config.db_user, config.db_passw
     }
 });
 
-const Products = connection.define('products', {
+const Product = connection.define('products', {
     img_src: Sequelize.STRING,
     name: Sequelize.STRING,
     slug: Sequelize.STRING,
@@ -49,15 +49,18 @@ const Products = connection.define('products', {
     category_id: Sequelize.INTEGER
 });
 
-const Shops = connection.define('shops', {
+const Shop = connection.define('shops', {
     img_src: Sequelize.STRING,
     name: Sequelize.STRING,
     slug: Sequelize.STRING,
     description: Sequelize.INTEGER
 });
 
+Product.belongsTo(Shop, {foreignKey: 'shop_id'});
+Shop.hasMany(Product, {foreignKey: 'shop_id'});
+
 function getProducts(callback) {
-    Products
+    Product
         .all()
         .then(function (products) {
             if(!products) callback({"error": {"message": "No results"}});
@@ -69,12 +72,11 @@ function getProducts(callback) {
 }
 
 function getProductsByShopId(shop_id, callback) {
-    Products
+    Product
         .findAll({where: {shop_id: shop_id}})
         .then(function (products) {
             if(!products) callback({"error": {"message": "No results"}});
             callback(products)
-
         })
         .catch(function (errors) {
             callback({"error":errors})
@@ -82,8 +84,13 @@ function getProductsByShopId(shop_id, callback) {
 }
 
 function getProductById(id, callback) {
-    Products
-        .findOne({where: {id: id}})
+    Product
+        .findOne({
+            where: {id: id},
+            include:
+                [{ model: Shop, attributes: ['img_src', 'slug'] }],
+            order: [[Shop, 'img_src']]
+        })
         .then(function (products) {
             if(!products) callback({"error": {"message": "No results"}});
             callback(products)
@@ -94,7 +101,7 @@ function getProductById(id, callback) {
 }
 
 function getShops(callback) {
-    Shops
+    Shop
         .all()
         .then(function (shops) {
             if(!shops) callback({"error": {"message": "No results"}});
@@ -106,7 +113,7 @@ function getShops(callback) {
 }
 
 function getShopById(id, callback) {
-    Shops
+    Shop
         .findOne({where: {id: id}})
         .then(function (shop) {
             if(!shop) callback({"error": {"message": "No results"}});
@@ -155,7 +162,7 @@ function removeTables(callback) {
 }
 
 function insertJSON(insertion, callback) {
-    Products
+    Product
         .bulkCreate(insertion, {validate: true})
         .then(function (result) {
             callback({"success": result})

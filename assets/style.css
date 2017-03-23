@@ -18,7 +18,8 @@ a {
     color: #298C99;
 }
 
-a:hover {
+a:hover,
+a:focus {
     color: #2A3540;
     text-decoration: none;
 }
@@ -100,11 +101,6 @@ a:hover {
     color: #A2A6B0;
 }
 
-footer {
-    background-color: #2A3540;
-    color: #298C99;
-}
-
 /* navbar styles */
 
 .navbar {
@@ -176,6 +172,18 @@ footer {
 
 .admin-panel {
     background-color: rgba(41,140,153, 0.3);
+}
+
+/* footer stiles */
+
+footer {
+    background-color: #2A3540;
+    color: #298C99;
+}
+
+footer a:hover,
+footer a:focus {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* end of styles */
