@@ -1,24 +1,37 @@
 <div class="container">
-    <div class="alert alert-danger" ng-if="productList.error">{{productList.error}}</div>
-    <div class="row product-list" ng-if="!productList.error">
+    <div class="alert alert-danger"
+         ng-if="productList.error">{{productList.error.message}}</div>
+    <div class="row product-list"
+         ng-if="!productList.error">
+
         <h2 ng-if="shop">Products from "{{shop.name}}" shop</h2>
         <ng-repeat ng-repeat="product in productList">
             <div class="col-md-2 product-box"
                  ng-init="product.quantity = 1">
                 <figure>
-                    <a ng-href="#!/products/{{product.slug}}">
-                        <img ng-src="{{product.img_src}}" alt="" class="img-responsive">
+                    <a ui-sref="product({ id: product.id, slug: product.slug})">
+                        <img ng-src="{{product.img_src}}"
+                             alt=""
+                             class="img-responsive">
                     </a>
                 </figure>
                 <figcaption>
-                    <a ng-href="#!/products/{{product.slug}}">
+                    <a ui-sref="product({ id: product.id, slug: product.slug})">
                         <p class="product-box_name">{{product.name}}</p>
                     </a>
-                    <span ng-if="product.price" class="price">{{product.price | currency : "zł"}}</span>
-                    <span ng-if="product.old_price" class="price product-box_old-price">{{product.old_price | currency : "zł"}}</span>
+                    <span ng-if="product.price"
+                          class="price">
+                        {{product.price | currency : "zł"}}</span>
+                    <span ng-if="product.old_price"
+                          class="price product-box_old-price">
+                        {{product.old_price | currency : "zł"}}</span>
                     <div class="cart-button">
-                        <input type="text" class="cart-button_quantity" ng-model="product.quantity">
-                        <div class="btn btn-primary cart-button_add" ng-click="addToCart(product.price)">Add to cart</div>
+                        <input type="text"
+                               class="cart-button_quantity"
+                               ng-model="product.quantity">
+                        <div class="btn btn-primary cart-button_add"
+                             ng-click="addToCart(product.price)">
+                            Add to cart</div>
                     </div>
                 </figcaption>
             </div>

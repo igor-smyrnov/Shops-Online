@@ -1,20 +1,29 @@
 <div class="container">
-    <div class="alert alert-danger" ng-if="product.error">{{product.error}}</div>
-    <div class="row product-single" ng-if="!product.error">
+    <div class="alert alert-danger"
+         ng-if="product.error">{{product.error.message}}</div>
+    <div class="row product-single"
+         ng-if="!product.error">
         <div class="col-md-4 product-single_image">
-            <img ng-src="{{product.img_src}}" alt="" class="img-responsive">
+            <img ng-src="{{product.img_src}}"
+                 alt=""
+                 class="img-responsive">
         </div>
         <div class="col-md-6 product-single_details">
             <h1>{{product.name}}</h1>
             <div>
-                <span ng-if="product.price" class="price">{{product.price | currency : "zł"}}</span>
-                <span ng-if="product.old_price" class="price product-box_old-price">{{product.old_price | currency : "zł"}}</span>
+                <span ng-if="product.price"
+                      class="price">
+                    {{product.price | currency : "zł"}}</span>
+                <span ng-if="product.old_price"
+                      class="price product-box_old-price">
+                    {{product.old_price | currency : "zł"}}</span>
             </div>
             <p>{{product.description}}</p>
-            <div ng-if="shop" class="product-single_shop-link small">
+            <div ng-if="product.shop"
+                 class="product-single_shop-link small">
                 See another products of:
-                <a ng-href="#!/{{shop.slug}}/products">
-                    <img ng-src="{{shop.img_src}}" alt="">
+                <a ui-sref="byShop({ shopId: product.shop_id, shopSlug: product.shop.slug})">
+                    <img ng-src="{{product.shop.img_src}}" alt="">
                 </a>
             </div>
         </div>

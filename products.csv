@@ -1,0 +1,10 @@
+img_src,name,slug,price,old_price,description,shop_id,category_id
+./../assets/img/lidl_001.jpg,Oshee Woda,oshee_woda_01,2.49,,"555 ml/1 but.1 l=4,49",1,1
+./../assets/img/lidl_002.jpg,Ocean Sea Krewetki indyjskie kidi lub mieszanka morska,ocean_sea_krewetki,9.99,,"250 g/1 opak.100 g=4,00",1,1
+./../assets/img/lidl_003.jpg,Fin Carre Czekolada mleczna z siekanymi migda?ami,fin_carre_czekolada_01,2.69,,100 g/1 opak.,1,1
+./../assets/img/kaufland_001.jpg,Sok pomara?czowy,sok_pomaranczowy_01,3.99,4.44,Sok pomara?czowy 100%,2,1
+./../assets/img/kaufland_002.jpg,Kiwi,kiwi_01,5.99,,3 sztuki opakowanie,2,1
+./../assets/img/kaufland_003.jpg,Tofu naturalne,tofu_naturalne,4.99,6.45,2 x 200 g opakowanie,2,1
+./../assets/img/piotr_i_pawel_001.jpg,B?onnik gryczany bio,blonnik_gryczany,16.99,,"B?onnik gryczany Bio - mo?na spo?ywa? z jogurtem , musli , p?atkami ?niadaniowymi , kakao , mlekiem , kefirem lub sokiem . Mo?na te? stosowa? do zag?szczenia koktajli , zup , sos?w , deser?w oraz jako dodatek do pieczenia ciast i chleba. ",3,1
+./../assets/img/piotr_i_pawel_002.jpg,Wafle ry?owe naturalne,wafle_ryzowe_01,2.39,,Wafle ry?owe naturalne - Piotr i Pawe? ,3,1
+./../assets/img/piotr_i_pawel_003.jpg,Mas?o Irlandzkie Dublin Dairy,dublin_dairy,7.29,,Mas?o irlandzkie Dublin Dair. Zawarto?? t?uszczu 82% ,3,1

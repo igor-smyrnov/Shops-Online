@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/igor-smyrnov/shops-online-js#readme",
   "dependencies": {
-    "express": "^4.14.1",
     "csvjson": "^4.1.2",
-    "mysql": "^2.11.1"
+    "express": "^4.14.1",
+    "mysql": "^2.11.1",
+    "sequelize": "^3.30.2"
   }
 }

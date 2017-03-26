@@ -18,7 +18,8 @@ a {
     color: #298C99;
 }
 
-a:hover {
+a:hover,
+a:focus {
     color: #2A3540;
     text-decoration: none;
 }
@@ -26,6 +27,7 @@ a:hover {
 .btn {
     border-radius: 0;
     padding: 6px 8px;
+    box-shadow: inset 0 17px 0 0 rgba(255, 255, 255, 0.4);
 }
 
 .form-control {
@@ -43,9 +45,6 @@ a:hover {
 .btn-primary:active,
 .btn-primary:focus {
     background-color: #E81D18;
-    border-color: transparent;
-    -webkit-box-shadow: none;
-    box-shadow: none;
 }
 
 .btn-info,
@@ -102,11 +101,6 @@ a:hover {
     color: #A2A6B0;
 }
 
-footer {
-    background-color: #2A3540;
-    color: #298C99;
-}
-
 /* navbar styles */
 
 .navbar {
@@ -120,7 +114,7 @@ footer {
 }
 
 .navbar-default .navbar-brand {
-    color: #2A3540;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .navbar-default .navbar-brand:focus,
@@ -129,16 +123,11 @@ footer {
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: #2A3540;
-    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .navbar-default .navbar-nav>li>a:focus,
-.navbar-default .navbar-nav>li>a:hover {
-    color: #A2A6B0;
-    background-color: #2A3540;
-}
-
+.navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
 .navbar-default .navbar-nav>.active>a:hover,
@@ -183,6 +172,18 @@ footer {
 
 .admin-panel {
     background-color: rgba(41,140,153, 0.3);
+}
+
+/* footer stiles */
+
+footer {
+    background-color: #2A3540;
+    color: #298C99;
+}
+
+footer a:hover,
+footer a:focus {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* end of styles */

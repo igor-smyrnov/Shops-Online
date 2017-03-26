@@ -1,14 +1,20 @@
 <div class="container">
+    <div class="alert alert-danger"
+         ng-if="shop.error">{{shop.error.message}}</div>
+    <div class="row shop-single"
+         ng-if="!shop.error">
     <div class="row shop-single">
         <div class="col-md-2 shop-single_image">
-            <img ng-src="{{shop.img_src}}" alt="" class="img-responsive">
+            <img ng-src="{{shop.img_src}}"
+                 alt=""
+                 class="img-responsive">
         </div>
         <div class="col-md-8 shop-single_description">
             <h1>{{shop.name}}</h1>
             <p>{{shop.description}}</p>
             <div class="shop-single_products-link small">
                 See products of:
-                <a ng-href="#!/{{shop.slug}}/products">
+                <a ui-sref="byShop({ shopId: shop.id, shopSlug: shop.slug})">
                     <img ng-src="{{shop.img_src}}" alt="">
                 </a>
             </div>
