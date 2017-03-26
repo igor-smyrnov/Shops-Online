@@ -30,6 +30,13 @@ app.get('/getProductById/:id', function (request, response) {
     });
 });
 
+app.get('/getProductBySlug/:slug', function (request, response) {
+    DB.getProductBySlug(request.params.slug, function (err, rows) {
+        if (err) response.send(err);
+        else response.send(rows);
+    });
+});
+
 app.get('/getShops', function (request, response) {
     DB.getShops(function (err, rows) {
         if (err) response.send(err);
@@ -39,6 +46,13 @@ app.get('/getShops', function (request, response) {
 
 app.get('/getShopById/:id', function (request, response) {
     DB.getShopById(request.params.id, function (err, rows) {
+        if (err) response.send(err);
+        else response.send(rows);
+    });
+});
+
+app.get('/getShopBySlug/:slug', function (request, response) {
+    DB.getShopBySlug(request.params.slug, function (err, rows) {
         if (err) response.send(err);
         else response.send(rows);
     });

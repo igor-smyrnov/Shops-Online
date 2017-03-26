@@ -100,6 +100,23 @@ function getProductById(id, callback) {
         })
 }
 
+function getProductBySlug(slug, callback) {
+    Product
+        .findOne({
+            where: {slug: slug},
+            include:
+                [{ model: Shop, attributes: ['img_src', 'slug'] }],
+            order: [[Shop, 'img_src']]
+        })
+        .then(function (products) {
+            if(!products) callback({"error": {"message": "No results"}});
+            callback(products)
+        })
+        .catch(function (errors) {
+            callback({"error":errors})
+        })
+}
+
 function getShops(callback) {
     Shop
         .all()
@@ -115,6 +132,17 @@ function getShops(callback) {
 function getShopById(id, callback) {
     Shop
         .findOne({where: {id: id}})
+        .then(function (shop) {
+            if(!shop) callback({"error": {"message": "No results"}});
+            callback(shop);
+        })
+        .catch(function (errors) {
+            callback({"error":errors})
+        })
+}
+function getShopBySlug(slug, callback) {
+    Shop
+        .findOne({where: {slug: slug}})
         .then(function (shop) {
             if(!shop) callback({"error": {"message": "No results"}});
             callback(shop);
@@ -176,8 +204,10 @@ module.exports = {
     getProducts: getProducts,
     getProductsByShopId: getProductsByShopId,
     getProductById: getProductById,
+    getProductBySlug: getProductBySlug,
     getShops: getShops,
     getShopById: getShopById,
+    getShopBySlug: getShopBySlug,
     createTablesData: createTablesData,
     createTables: createTables,
     removeTables: removeTables,

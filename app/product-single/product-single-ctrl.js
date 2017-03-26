@@ -3,7 +3,7 @@
 SO.controller('productSingleController',
     [ '$scope', '$state', 'dataFactory',
         function ($scope, $state, dataFactory) {
-            dataFactory.getProductById($state.params.id)
+            dataFactory.getProductBySlug($state.params.slug)
                 .then(function (data) {
                     $scope.product = data;
                 })
