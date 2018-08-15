@@ -1,8 +1,8 @@
-# shops-online
-Service for grocery shops <br>
+# Shops Online
 ![Preview](preview.jpg?raw=true "Preview")
 ### Main technologies: ###
-* Angular
+* AngularJS
+* Bootstrap
 * NodeJS
 * Sequelize ORM
 * MySql
